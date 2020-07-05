@@ -35,7 +35,7 @@ object FirstModule {
         @annotation.tailrec
         def go(n: Int): Boolean = {
             if(n >= as.length-1) false
-            else if (ordered(as(n),as(n+1)))
+            else if (ordered(as(n),as(n+1))) true
             else go(n + 1)
 
         }
