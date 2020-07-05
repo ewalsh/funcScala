@@ -9,6 +9,17 @@ object FirstModule {
         }
     }
 
+    def findFirstString(ss: Array[String], key: String): Int = {
+        @annotation.tailrec
+        def loop(n: Int): Int = {
+            if(n >= ss.length) -1
+            else if (ss(n) == key) n
+            else loop(n + 1)
+        }
+
+        loop(0)
+    }
+
     def findFirst[A](as: Array[A], p: A => Boolean): Int = {
         @annotation.tailrec
         def loop(n: Int): Int = {
@@ -22,8 +33,14 @@ object FirstModule {
 
     def isSorted[A](as: Array[A], ordered: (A, A) => Boolean): Boolean = {
         @annotation.tailrec
-        // if(as.length == 1) -1
-        // else if (n >= as.l)
+        def go(n: Int): Boolean = {
+            if(n >= as.length-1) false
+            else if (ordered(as(n),as(n+1)))
+            else go(n + 1)
+
+        }
+
+        go(0)
     }
 
     // from the book, but I don't think this is right
